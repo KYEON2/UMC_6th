@@ -1,0 +1,85 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #e0f7fa; /* Light blue background */
+  }
+  
+  .wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .vali_wrapper {
+    background-color: #ffffff;
+    width: 600px; /* Adjust width as necessary */
+    height: 1000px; /* Adjust height as necessary */
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    border-radius: 8px; /* Adjust for rounded corners */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  h1 {
+    font-size: 2em; /* Adjust font-size as necessary */
+    margin-bottom: 0.5em;
+  }
+  
+  .bar {
+    width: 50%; 
+    border: none;
+    height: 1px;
+    background-color: #000; 
+    margin-bottom: 2em;
+  }
+
+  .inputs{
+    width: 200px;
+  }
+  
+  input[type="text"],
+  input[type="email"],
+  input[type="number"],
+  input[type="password"] {
+    width: 100%; /* Adjust input width as necessary */
+    padding: 10px;
+    margin-bottom: 0.5em;
+    border: 1px solid #ccc; /* Light grey border */
+    border-radius: 4px; /* Rounded corners for inputs */
+  }
+  
+  button.enter {
+    background-color: #757575; /* Dark grey button */
+    color: white;
+    width: 220px;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    margin-top: 2em; 
+    cursor: pointer;
+  }
+  
+  button.enter:hover {
+    background-color: #616161;
+  }
+
+  p {
+    font-size: 10px;
+    color: red;
+  }
+  
+  
+  /* Add responsiveness to maintain the layout on different screen sizes */
+  @media (max-width: 768px) {
+    .vali_wrapper {
+      width: 90%; /* Full width on smaller screens */
+      height: 90%; /* Auto-adjust height on smaller screens */
+      padding: 10px;
+    }
+  }
