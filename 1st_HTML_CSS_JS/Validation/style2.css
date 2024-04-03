@@ -69,17 +69,40 @@ body, html {
     background-color: #616161;
   }
 
-  p {
+  #out_text, #out_email, #out_age ,#out_pass, #out_repass{
     font-size: 10px;
     color: red;
   }
+
+  #cur_name, #cur_email, #cur_age, #cur_pass, #cur_repass {
+    font-size: 10px;
+    color: green;
+  }
   
+  .modal {
+    position: fixed; /*요소의 위치 지정 방법 static, relative, absolute, fixed, sticky등이 있음*/
+    top: 0;
+    left: 0;
+    width : 100%;
+    height : 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  .modal_p {
+    background: white;
+    padding: 24px 16px;
+    border-radius: 4px;
+    width: 320px;
+  }
   
-  /* Add responsiveness to maintain the layout on different screen sizes */
-  @media (max-width: 768px) {
+  @media (max-width: 1000px) {
     .vali_wrapper {
-      width: 90%; /* Full width on smaller screens */
-      height: 90%; /* Auto-adjust height on smaller screens */
+      width: 90%; 
+      height: 90%; 
       padding: 10px;
     }
   }

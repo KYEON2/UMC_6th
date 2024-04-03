@@ -1,8 +1,12 @@
+const count = [0,0,0,0,0];
+const modal = document.querySelector(".modal");
+const button = document.querySelector(".close");
 //이름 -> 올바르게 입력했을 때 문구 바뀌는거랑, 색깔 다르게 출력하는 것 부족
 document.addEventListener('DOMContentLoaded', function() {
     const textInput = document.querySelector('.name');
     const enterButton = document.querySelector('.enter');
     const errorOutput = document.getElementById('out_text');
+    const correctOutput = document.getElementById('cur_name');
 
     // 버튼 클릭 이벤트 리스너 추가
     enterButton.addEventListener('click', function(event) {
@@ -11,11 +15,15 @@ document.addEventListener('DOMContentLoaded', function() {
         const isText = /^[a-zA-Z가-힣]+$/.test(value);
 
         if(value.length === 0) {
-            errorOutput.textContent = '필수 입력 항목입니다'; // 입력값이 없을 때 메시지 출력
+            errorOutput.textContent = '필수 입력 항목입니다';
+            correctOutput.textContent = ''; 
         } else if (!isText) {
-            errorOutput.textContent = '필수 입력 항목입니다'; // 잘못된 형식의 입력에 대한 메시지
+            errorOutput.textContent = '필수 입력 항목입니다'; 
+            correctOutput.textContent = ''; 
         } else {
-            errorOutput.textContent = '멋진 이름이네요!'; // 올바른 입력에 대한 메시지
+            errorOutput.textContent = ''; 
+            correctOutput.textContent = '멋진 이름이네요!'; 
+            count[0] = 1;
         }
     });
 
@@ -35,6 +43,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const emailInput = document.querySelector('.email');
     const enterButton = document.querySelector('.enter');
     const errorOutput = document.getElementById('out_email');
+    const correctOutput = document.getElementById('cur_email');
 
     // 이메일 유효성 검사 함수
     function validateEmail(email) {
@@ -55,11 +64,15 @@ document.addEventListener('DOMContentLoaded', function() {
         if(value.length === 0) {
             errorOutput.textContent = '이메일을 입력해주세요!';
             enterButton.disabled = true; // 버튼 비활성화
+            correctOutput.textContent = ''; 
         } else if (!validateEmail(value)) {
             errorOutput.textContent = '올바른 이메일 형식이 아닙니다!';
             enterButton.disabled = true; // 버튼 비활성화
+            correctOutput.textContent = ''; 
         } else {
-            errorOutput.textContent = '올바른 이메일 형식입니다!';
+            errorOutput.textContent = '';
+            correctOutput.textContent = '올바른 이메일 형식입니다!';
+            count[1] = 1;
         }
     });
 
@@ -74,6 +87,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const ageInput = document.querySelector('.age');
     const enterButton = document.querySelector('.enter');
     const errorOutput = document.getElementById('out_age');
+    const correctOutput = document.getElementById('cur_age');
 
     // 사용자가 나이 입력을 시작하면 버튼을 활성화
     ageInput.addEventListener('input', function() {
@@ -88,16 +102,23 @@ document.addEventListener('DOMContentLoaded', function() {
         // 입력값 검사
         if(value.length === 0) {
             errorOutput.textContent = '나이를 입력해주세요!';
+            correctOutput.textContent = ''; 
         } else if (!isNumber) {
             errorOutput.textContent = '나이는 숫자 형식이여야 합니다!';
+            correctOutput.textContent = ''; 
         } else if (parseFloat(value) < 0) {
             errorOutput.textContent = '나이는 음수가 될 수 없습니다!';
+            correctOutput.textContent = ''; 
         } else if (parseFloat(value) !== parseInt(value)) {
             errorOutput.textContent = '나이는 소수가 될 수 없습니다!';
+            correctOutput.textContent = ''; 
         } else if (parseInt(value) < 19) {
             errorOutput.textContent = '미성년자는 가입할 수 없습니다!';
+            correctOutput.textContent = ''; 
         } else {
-            errorOutput.textContent = '올바른 나이 형식입니다!'; // 모든 조건이 통과되면 메시지 초기화
+            errorOutput.textContent = '';
+            correctOutput.textContent = '올바른 나이 형식입니다!'; // 모든 조건이 통과되면 메시지 초기화
+            count[2] = 1;
         }
     });
 
@@ -110,6 +131,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const passwordInput = document.querySelector('.password');
     const enterButton = document.querySelector('.enter');
     const errorOutput = document.getElementById('out_pass'); 
+    const correctOutput = document.getElementById('cur_pass');
 
     // 사용자가 나이 입력을 시작하면 버튼을 활성화
     passwordInput.addEventListener('input', function() {
@@ -125,12 +147,17 @@ document.addEventListener('DOMContentLoaded', function() {
         // 비밀번호 길이 검사
         if(value.length > 0 && value.length < minLength) {
             errorOutput.textContent = '비밀번호는 최소 4자리 이상이어야 합니다.';
+            correctOutput.textContent = ''; 
         } else if (value.length > maxLength) {
             errorOutput.textContent = '비밀번호는 최대 12자리까지 가능합니다.';
+            correctOutput.textContent = ''; 
         } else if (!passwordPattern.test(value)) {
             errorOutput.textContent = '영어, 숫자, 특수문자를 모두 사용해야 합니다.';
+            correctOutput.textContent = ''; 
         } else {
-            errorOutput.textContent = '올바른 비밀번호입니다!'; // 조건에 맞는 경우 메시지 초기화
+            errorOutput.textContent = '';
+            correctOutput.textContent = '올바른 비밀번호입니다!'; // 조건에 맞는 경우 메시지 초기화
+            count[3] = 1;
         }
     });
 
@@ -144,6 +171,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const rePasswordInput = document.querySelector('.re_password');
     const enterButton = document.querySelector('.enter');
     const errorOutput = document.getElementById('out_repass');
+    const correctOutput = document.getElementById('cur_repass');
+    
 
     enterButton.addEventListener('click', function(event) {
         event.preventDefault(); // 폼 제출 방지
@@ -153,12 +182,20 @@ document.addEventListener('DOMContentLoaded', function() {
         // 비밀번호와 비밀번호 확인 입력값 비교
         if(password !== rePassword) {
             errorOutput.textContent = '비밀번호가 일치하지 않습니다';
+            correctOutput.textContent = ''; 
         } else if (!password || !rePassword) {
             // 비어 있는 입력값 처리
             errorOutput.textContent = '비밀번호를 입력해주세요';
+            correctOutput.textContent = ''; 
         } else {
             // 비밀번호 일치 및 입력값이 있는 경우
-            errorOutput.textContent = '비밀번호가 일치합니다';
+            errorOutput.textContent = '';
+            correctOutput.textContent = '비밀번호가 일치합니다';
+            count[4] = 1;
+        }
+
+        if(count.reduce((a, b) => a + b, 0) == 5) {
+            modal.style.display = "flex"// 반복문을 종료
         }
     });
 
@@ -172,4 +209,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // 초기 페이지 로드 시 버튼을 비활성화 상태로 설정
     enterButton.disabled = true;
+});
+
+button.addEventListener("click", () => {
+    modal.style.display = "none";
 });
