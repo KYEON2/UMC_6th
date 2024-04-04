@@ -1,0 +1,44 @@
+body {
+    background-color:aliceblue;
+}
+
+.wrapper{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 50px;
+}
+
+.plan {
+    width: 500px;
+    padding: 10px;
+}
+
+h1 {
+    text-align: center;
+}
+
+
+input::placeholder {
+    font-style: italic;
+  }
+  
+.list {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.will_do{
+    width: 150px;
+    margin: 20px;
+}
+
+.done{
+    width: 150px;
+    margin: 20px;
+}
+
+p{
+    text-align: center;
+}
